@@ -1,0 +1,23 @@
+---
+# tasks file for qualcomm
+- name: creating the directory /oracle-db
+  file:
+    path: /oracle-db
+    state: directory
+
+
+- name: create file in /oracle-db
+  copy: 
+    content: "This ids from Ansible automation"
+    dest:  /oracle-db/testfile
+
+
+- name: copy the etc password to the file
+  copy: 
+    src: /etc/passwd
+    dest: /oracle-db/mypasswd
+
+- name: server report
+  template:
+    src: server.j2
+    dest: /oracle-db/server-report.txt
